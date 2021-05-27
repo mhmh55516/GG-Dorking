@@ -1,5 +1,6 @@
 
 import sys
+import argparse
 from termcolor import colored
 
 tool_header = '''
@@ -10,8 +11,14 @@ ____ ____    ___  ____ ____ _  _ _ _  _ ____
 tool_header2 = '''	   Coded By: Eslam Akl
 	Blog: eslam3kl.medium.com
 '''
-site = sys.argv[1]
-company = site.split(".")[0]
+
+parser = argparse.ArgumentParser(description='GG-Dorking')
+parser.add_argument('-s','--site', help='site', required=True)
+parser.add_argument('-o','--output', help='output to dir',, required=True)
+args = vars(parser.parse_args())
+site = args['site']
+output_file = "{}.html".format(args['output']+site)
+company = site
 content = '''
 *---------------------------------------------*
 | GitHub Dorking (W/O TLD)     |   64 Link    |
@@ -22,7 +29,7 @@ content = '''
 | Others                       |   235 Link   | 
 *---------------------------------------------*
 '''
-file = "Output file: %s.html" % company
+file = "Output file: {}.html".format(output+site)
 
 error_file = "error_messages.txt"
 ext_file = "file_extension.txt"
@@ -168,7 +175,6 @@ print(colored(content, "green"))
 print(colored(file, "white"))
 print("\n")
 
-output_file = "%s.html" %company
 sys.stdout = open(output_file, "w+")
 print(header)
 github_dorking(github_words,site,"GitHub Dorking [64]")
