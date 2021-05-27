@@ -14,7 +14,7 @@ tool_header2 = '''	   Coded By: Eslam Akl
 
 parser = argparse.ArgumentParser(description='GG-Dorking')
 parser.add_argument('-s','--site', help='site', required=True)
-parser.add_argument('-o','--output', help='output to dir',, required=True)
+parser.add_argument('-o','--output', help='output to dir', required=True)
 args = vars(parser.parse_args())
 site = args['site']
 output_file = "{}.html".format(args['output']+site)
