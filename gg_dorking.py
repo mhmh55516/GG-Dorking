@@ -13,11 +13,16 @@ tool_header2 = '''	   Coded By: Eslam Akl
 '''
 
 parser = argparse.ArgumentParser(description='GG-Dorking')
-parser.add_argument('-s','--site', help='site', required=True)
+parser.add_argument('-s','--site', help='Target', required=True)
 parser.add_argument('-o','--output', help='output to dir', required=True)
+parser.add_argument('-e','--exclude', help='exclude domain', required=False)
 args = vars(parser.parse_args())
 site = args['site']
 output_file = "{}.html".format(args['output']+site)
+if args['exclude']:
+	exclude = args['exclude']
+else:
+	exclude = " -stackoverflow -wpbeginner -foro -forum -topic -blog -about -docs -articles"
 company = site
 content = '''
 *---------------------------------------------*
@@ -29,7 +34,7 @@ content = '''
 | Others                       |   235 Link   | 
 *---------------------------------------------*
 '''
-file = "Output file: {}.html".format(output+site)
+file = "Output file: {}".format(output_file)
 
 error_file = "error_messages.txt"
 ext_file = "file_extension.txt"
@@ -66,7 +71,7 @@ def google_dorking(file,site,title):
 		for query in wordlist:
 			query = query.strip()
 			line = query.replace('"', "'")
-			line2 = "site:" + site + " " + line + " -stackoverflow -wpbeginner -foro -forum -topic -blog -about -docs -articles"
+			line2 = "site:" + site + " " + line + exclude
 			line_plus = line2.replace(" ", "+")
 			link = "http://www.google.com/search?q=" + line_plus
 			print('<a>[%d]</a>' %i)
