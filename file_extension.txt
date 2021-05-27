@@ -185,7 +185,6 @@ intitle:"curriculum vitae" filetype:doc
 intitle:"urchin (5|3|admin)" ext:cgi
 intitle:index.of intext:"secring.skr"|"secring.pgp"|"secring.bak"
 intitle:intranet inurl:intranet intext:"phone"
-intitle:rapidshare intext:login
 inurl:"GRC.DAT" intext:"password"
 inurl:"NmConsole/Login.asp" | intitle:"Login – Ipswitch WhatsUp Professional 2005″ | intext:"Ipswitch WhatsUp 
 inurl:"printer/main.html" intext:"settings"
